@@ -316,7 +316,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "assignment"
+          "name": "assignment_expression"
         }
       ]
     },
@@ -514,7 +514,7 @@
         ]
       }
     },
-    "assignment": {
+    "assignment_expression": {
       "type": "PREC_RIGHT",
       "value": 1,
       "content": {
@@ -522,7 +522,7 @@
         "members": [
           {
             "type": "FIELD",
-            "name": "left",
+            "name": "name",
             "content": {
               "type": "SYMBOL",
               "name": "_expression"
@@ -538,7 +538,7 @@
           },
           {
             "type": "FIELD",
-            "name": "right",
+            "name": "value",
             "content": {
               "type": "SYMBOL",
               "name": "_expression"
@@ -581,7 +581,7 @@
         },
         {
           "type": "FIELD",
-          "name": "right",
+          "name": "operand",
           "content": {
             "type": "SYMBOL",
             "name": "_expression"
@@ -602,7 +602,7 @@
         },
         {
           "type": "FIELD",
-          "name": "right",
+          "name": "operand",
           "content": {
             "type": "SYMBOL",
             "name": "_expression"
@@ -615,7 +615,7 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "type",
+          "name": "operator",
           "content": {
             "type": "CHOICE",
             "members": [
@@ -636,7 +636,7 @@
         },
         {
           "type": "FIELD",
-          "name": "right",
+          "name": "operand",
           "content": {
             "type": "SYMBOL",
             "name": "_expression"

@@ -35,7 +35,7 @@
     }
   },
   {
-    "type": "assignment",
+    "type": "assignment_expression",
     "named": true,
     "fields": {
       "assign": {
@@ -48,7 +48,7 @@
           }
         ]
       },
-      "left": {
+      "name": {
         "multiple": false,
         "required": true,
         "types": [
@@ -78,7 +78,7 @@
           }
         ]
       },
-      "right": {
+      "value": {
         "multiple": false,
         "required": true,
         "types": [
@@ -123,7 +123,7 @@
           "named": true
         },
         {
-          "type": "assignment",
+          "type": "assignment_expression",
           "named": true
         },
         {
@@ -480,6 +480,36 @@
     "type": "logical_negation_expression",
     "named": true,
     "fields": {
+      "operand": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
       "operator": {
         "multiple": false,
         "required": true,
@@ -489,36 +519,6 @@
             "named": false
           }
         ]
-      },
-      "right": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "character",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
       }
     }
   },
@@ -526,17 +526,7 @@
     "type": "negation_expression",
     "named": true,
     "fields": {
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "~",
-            "named": false
-          }
-        ]
-      },
-      "right": {
+      "operand": {
         "multiple": false,
         "required": true,
         "types": [
@@ -563,6 +553,16 @@
           {
             "type": "unary_expression",
             "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "~",
+            "named": false
           }
         ]
       }
@@ -720,7 +720,7 @@
     "type": "type_conversion",
     "named": true,
     "fields": {
-      "right": {
+      "operand": {
         "multiple": false,
         "required": true,
         "types": [
@@ -750,7 +750,7 @@
           }
         ]
       },
-      "type": {
+      "operator": {
         "multiple": false,
         "required": true,
         "types": [

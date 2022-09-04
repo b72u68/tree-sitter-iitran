@@ -51,7 +51,7 @@ module.exports = grammar({
         $.arithmetic_expression,
         $.logical_expression,
         $.comparison_expression,
-        $.assignment
+        $.assignment_expression
       ),
     arithmetic_expression: ($) =>
       choice(
@@ -86,13 +86,13 @@ module.exports = grammar({
           field("right", $._expression)
         )
       ),
-    assignment: ($) =>
+    assignment_expression: ($) =>
       prec.right(
         1,
         seq(
-          field("left", $._expression),
+          field("name", $._expression),
           field("assign", "<-"),
-          field("right", $._expression)
+          field("value", $._expression)
         )
       ),
     unary_expression: ($) =>
@@ -105,13 +105,13 @@ module.exports = grammar({
         )
       ),
     negation_expression: ($) =>
-      seq(field("operator", "~"), field("right", $._expression)),
+      seq(field("operator", "~"), field("operand", $._expression)),
     logical_negation_expression: ($) =>
-      seq(field("operator", "NOT"), field("right", $._expression)),
+      seq(field("operator", "NOT"), field("operand", $._expression)),
     type_conversion: ($) =>
       seq(
-        field("type", choice("CHAR", "LG", "INT")),
-        field("right", $._expression)
+        field("operator", choice("CHAR", "LG", "INT")),
+        field("operand", $._expression)
       ),
     identifier: (_) => /[a-zA-Z][a-zA-Z0-9_]*/,
     _constant: ($) => choice($.character, $.number),
