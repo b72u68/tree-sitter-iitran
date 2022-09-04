@@ -1,7 +1,11 @@
-;; folds.scm
+;; indents.scm
 
 [
  (if_statement)
  (while_statement)
  (do_statement)
-] @fold
+] @indent
+
+[
+ (else_clause)
+] @branch

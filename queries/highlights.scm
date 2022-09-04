@@ -1,4 +1,4 @@
-;highlights.csm
+;;highlights.csm
 
 (identifier) @variable
 (character) @constant
