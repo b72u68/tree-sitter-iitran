@@ -12,7 +12,7 @@ References
   for coming up with the grammar for MiniIITRAN for [CS 443: Compiler Construction](http://cs.iit.edu/~smuller/cs443-f22/index.html)
   course at Illinois Institute of Technology.
 
-Installation
+## Installation
 
 Follow this [isntruction](https://github.com/nvim-treesitter/nvim-treesitter#adding-parsers)
 to add new parser and this [instruction](https://github.com/nvim-treesitter/nvim-treesitter#adding-queries)
