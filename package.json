@@ -13,7 +13,7 @@
     "test": "tree-sitter test"
   },
   "author": "My Dinh",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "nan": "^2.16.0"
   },
