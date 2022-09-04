@@ -1,0 +1,33 @@
+{
+  "name": "tree-sitter-iitran",
+  "version": "1.0.0",
+  "description": "IITRAN grammar for tree-sitter",
+  "main": "bindings/node",
+  "keywords": [
+    "parser",
+    "lexer"
+  ],
+  "scripts": {
+    "build": "tree-sitter generate",
+    "parse": "tree-sitter parse",
+    "test": "tree-sitter test"
+  },
+  "author": "My Dinh",
+  "license": "ISC",
+  "dependencies": {
+    "nan": "^2.16.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.7"
+  },
+  "repository": "https://github.com/b72u68/tree-sitter-iitran",
+  "tree-sitter": [
+    {
+      "scope": "source.iit",
+      "file-types": [
+        "iit"
+      ],
+      "injection-regex": "^(iit|iitran)$"
+    }
+  ]
+}
