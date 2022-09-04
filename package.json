@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tree-sitter generate",
     "parse": "tree-sitter parse",
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "install": "node-gyp rebuild"
   },
   "author": "My Dinh",
   "license": "MIT",
@@ -20,7 +21,10 @@
   "devDependencies": {
     "tree-sitter-cli": "^0.20.7"
   },
-  "repository": "https://github.com/b72u68/tree-sitter-iitran",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b72u68/tree-sitter-iitran.git"
+  },
   "tree-sitter": [
     {
       "scope": "source.iit",
@@ -29,5 +33,13 @@
       ],
       "injection-regex": "^(iit|iitran)$"
     }
-  ]
+  ],
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/b72u68/tree-sitter-iitran/issues"
+  },
+  "homepage": "https://github.com/b72u68/tree-sitter-iitran#readme",
+  "directories": {
+    "test": "tests"
+  }
 }

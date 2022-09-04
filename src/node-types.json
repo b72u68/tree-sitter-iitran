@@ -1,44 +1,59 @@
 [
   {
-    "type": "arithmetic_expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "assignment_expression",
+    "type": "assignment",
     "named": true,
     "fields": {
-      "assign": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
         "multiple": false,
         "required": true,
         "types": [
@@ -48,12 +63,16 @@
           }
         ]
       },
-      "name": {
+      "right": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
             "named": true
           },
           {
@@ -61,7 +80,19 @@
             "named": true
           },
           {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
             "named": true
           },
           {
@@ -73,37 +104,11 @@
             "named": true
           },
           {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
+            "type": "type_conversion",
             "named": true
           },
           {
-            "type": "character",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
+            "type": "unary_operator",
             "named": true
           }
         ]
@@ -111,155 +116,19 @@
     }
   },
   {
-    "type": "binary_expression",
+    "type": "binary_operator",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "arithmetic_expression",
+          "type": "assignment",
           "named": true
         },
         {
-          "type": "assignment_expression",
-          "named": true
-        },
-        {
-          "type": "comparison_expression",
-          "named": true
-        },
-        {
-          "type": "logical_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "closed_statement",
-    "named": true,
-    "fields": {
-      "do_statement": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "DO",
-            "named": false
-          },
-          {
-            "type": "END",
-            "named": false
-          },
-          {
-            "type": "closed_statement",
-            "named": true
-          },
-          {
-            "type": "open_statement",
-            "named": true
-          }
-        ]
-      },
-      "if_statement": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "ELSE",
-            "named": false
-          },
-          {
-            "type": "IF",
-            "named": false
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "character",
-            "named": true
-          },
-          {
-            "type": "closed_statement",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      },
-      "stop_statement": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "STOP",
-            "named": false
-          }
-        ]
-      },
-      "while_statement": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "WHILE",
-            "named": false
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "character",
-            "named": true
-          },
-          {
-            "type": "closed_statement",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "binary_expression",
+          "type": "binary_operator",
           "named": true
         },
         {
@@ -267,7 +136,19 @@
           "named": true
         },
         {
+          "type": "comparison_operator",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "logical_operator",
+          "named": true
+        },
+        {
+          "type": "not_operator",
           "named": true
         },
         {
@@ -279,14 +160,18 @@
           "named": true
         },
         {
-          "type": "unary_expression",
+          "type": "type_conversion",
+          "named": true
+        },
+        {
+          "type": "unary_operator",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "comparison_expression",
+    "type": "comparison_operator",
     "named": true,
     "fields": {
       "left": {
@@ -294,7 +179,11 @@
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
             "named": true
           },
           {
@@ -302,7 +191,19 @@
             "named": true
           },
           {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
             "named": true
           },
           {
@@ -314,7 +215,11 @@
             "named": true
           },
           {
-            "type": "unary_expression",
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
             "named": true
           }
         ]
@@ -354,7 +259,11 @@
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
             "named": true
           },
           {
@@ -362,7 +271,19 @@
             "named": true
           },
           {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
             "named": true
           },
           {
@@ -374,7 +295,11 @@
             "named": true
           },
           {
-            "type": "unary_expression",
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
             "named": true
           }
         ]
@@ -397,7 +322,149 @@
     }
   },
   {
-    "type": "logical_expression",
+    "type": "do_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_operator",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "logical_operator",
+          "named": true
+        },
+        {
+          "type": "not_operator",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "type_conversion",
+          "named": true
+        },
+        {
+          "type": "unary_operator",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_operator",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "logical_operator",
+          "named": true
+        },
+        {
+          "type": "not_operator",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "type_conversion",
+          "named": true
+        },
+        {
+          "type": "unary_operator",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "logical_operator",
     "named": true,
     "fields": {
       "left": {
@@ -405,7 +472,11 @@
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
             "named": true
           },
           {
@@ -413,7 +484,19 @@
             "named": true
           },
           {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
             "named": true
           },
           {
@@ -425,7 +508,11 @@
             "named": true
           },
           {
-            "type": "unary_expression",
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
             "named": true
           }
         ]
@@ -449,7 +536,11 @@
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
             "named": true
           },
           {
@@ -457,7 +548,19 @@
             "named": true
           },
           {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
             "named": true
           },
           {
@@ -469,7 +572,11 @@
             "named": true
           },
           {
-            "type": "unary_expression",
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
             "named": true
           }
         ]
@@ -477,15 +584,19 @@
     }
   },
   {
-    "type": "logical_negation_expression",
+    "type": "not_operator",
     "named": true,
     "fields": {
-      "operand": {
+      "argument": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
             "named": true
           },
           {
@@ -493,7 +604,19 @@
             "named": true
           },
           {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
             "named": true
           },
           {
@@ -505,7 +628,11 @@
             "named": true
           },
           {
-            "type": "unary_expression",
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
             "named": true
           }
         ]
@@ -523,142 +650,6 @@
     }
   },
   {
-    "type": "negation_expression",
-    "named": true,
-    "fields": {
-      "operand": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "character",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "~",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "open_statement",
-    "named": true,
-    "fields": {
-      "if_statement": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "ELSE",
-            "named": false
-          },
-          {
-            "type": "IF",
-            "named": false
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "character",
-            "named": true
-          },
-          {
-            "type": "closed_statement",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "open_statement",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      },
-      "while_statement": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "WHILE",
-            "named": false
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "character",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number",
-            "named": true
-          },
-          {
-            "type": "open_statement",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "parenthesized_expression",
     "named": true,
     "fields": {},
@@ -667,7 +658,11 @@
       "required": true,
       "types": [
         {
-          "type": "binary_expression",
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "binary_operator",
           "named": true
         },
         {
@@ -675,7 +670,19 @@
           "named": true
         },
         {
+          "type": "comparison_operator",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "logical_operator",
+          "named": true
+        },
+        {
+          "type": "not_operator",
           "named": true
         },
         {
@@ -687,7 +694,11 @@
           "named": true
         },
         {
-          "type": "unary_expression",
+          "type": "type_conversion",
+          "named": true
+        },
+        {
+          "type": "unary_operator",
           "named": true
         }
       ]
@@ -702,7 +713,19 @@
       "required": false,
       "types": [
         {
-          "type": "closed_statement",
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_operator",
           "named": true
         },
         {
@@ -710,22 +733,71 @@
           "named": true
         },
         {
-          "type": "open_statement",
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "logical_operator",
+          "named": true
+        },
+        {
+          "type": "not_operator",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
+          "named": true
+        },
+        {
+          "type": "type_conversion",
+          "named": true
+        },
+        {
+          "type": "unary_operator",
+          "named": true
+        },
+        {
+          "type": "while_statement",
           "named": true
         }
       ]
     }
   },
   {
+    "type": "stop_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "type_conversion",
     "named": true,
     "fields": {
-      "operand": {
+      "argument": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "binary_expression",
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
             "named": true
           },
           {
@@ -733,7 +805,19 @@
             "named": true
           },
           {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
             "named": true
           },
           {
@@ -745,7 +829,11 @@
             "named": true
           },
           {
-            "type": "unary_expression",
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
             "named": true
           }
         ]
@@ -771,23 +859,137 @@
     }
   },
   {
-    "type": "unary_expression",
+    "type": "unary_operator",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "~",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "while_statement",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "logical_negation_expression",
+          "type": "assignment",
           "named": true
         },
         {
-          "type": "negation_expression",
+          "type": "binary_operator",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_operator",
+          "named": true
+        },
+        {
+          "type": "do_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "logical_operator",
+          "named": true
+        },
+        {
+          "type": "not_operator",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "stop_statement",
           "named": true
         },
         {
           "type": "type_conversion",
+          "named": true
+        },
+        {
+          "type": "unary_operator",
+          "named": true
+        },
+        {
+          "type": "while_statement",
           "named": true
         }
       ]

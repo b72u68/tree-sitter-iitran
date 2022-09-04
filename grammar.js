@@ -7,58 +7,59 @@ module.exports = grammar({
     _type: (_) => choice("INTEGER", "CHARACTER", "LOGICAL"),
     declaration: ($) =>
       seq($._type, seq($.identifier, repeat(seq(",", $.identifier)))),
-    _statement: ($) => choice($.closed_statement, $.open_statement),
-    closed_statement: ($) =>
+    _statement: ($) => choice($._closed_statement, $._open_statement),
+    _closed_statement: ($) =>
       choice(
         $._expression,
-        field(
-          "if_statement",
-          seq(
-            "IF",
-            $._expression,
-            $.closed_statement,
-            "ELSE",
-            $.closed_statement
-          )
-        ),
-        field("do_statement", seq("DO", repeat($._statement), "END")),
-        field(
-          "while_statement",
-          seq("WHILE", $._expression, $.closed_statement)
-        ),
-        field("stop_statement", seq("STOP"))
+        alias($.ifelse_closed_statement, $.if_statement),
+        alias($.while_closed_statement, $.while_statement),
+        $.do_statement,
+        $.stop_statement
       ),
-    open_statement: ($) =>
+    ifelse_closed_statement: ($) =>
+      seq(
+        "IF",
+        $._expression,
+        $._closed_statement,
+        "ELSE",
+        $._closed_statement
+      ),
+    while_closed_statement: ($) =>
+      seq("WHILE", $._expression, $._closed_statement),
+    do_statement: ($) => seq("DO", repeat($._statement), "END"),
+    stop_statement: (_) => seq("STOP"),
+    _open_statement: ($) =>
       choice(
-        field("if_statement", seq("IF", $._expression, $._statement)),
-        field(
-          "if_statement",
-          seq("IF", $._expression, $.closed_statement, "ELSE", $.open_statement)
-        ),
-        field("while_statement", seq("WHILE", $._expression, $.open_statement))
+        alias($.if_open_statement, $.if_statement),
+        alias($.ifelse_open_statement, $.if_statement),
+        alias($.while_open_statement, $.while_statement)
       ),
+    if_open_statement: ($) => seq("IF", $._expression, $._statement),
+    ifelse_open_statement: ($) =>
+      seq("IF", $._expression, $._closed_statement, "ELSE", $._open_statement),
+    while_open_statement: ($) => seq("WHILE", $._expression, $._open_statement),
     _expression: ($) =>
       choice(
         $.identifier,
         $._constant,
-        $.binary_expression,
-        $.unary_expression,
+        $._binary_expression,
+        $._unary_expression,
         $.parenthesized_expression
       ),
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
-    binary_expression: ($) =>
+    _binary_expression: ($) =>
       choice(
-        $.arithmetic_expression,
-        $.logical_expression,
-        $.comparison_expression,
-        $.assignment_expression
+        $.binary_operator,
+        $.logical_operator,
+        $.comparison_operator,
+        $.assignment
       ),
-    arithmetic_expression: ($) =>
+    binary_operator: ($) =>
       choice(
         prec.left(6, seq($._expression, choice("*", "/"), $._expression)),
         prec.left(5, seq($._expression, choice("+", "-"), $._expression))
       ),
-    logical_expression: ($) =>
+    logical_operator: ($) =>
       choice(
         prec.left(
           3,
@@ -77,7 +78,7 @@ module.exports = grammar({
           )
         )
       ),
-    comparison_expression: ($) =>
+    comparison_operator: ($) =>
       prec.left(
         4,
         seq(
@@ -86,32 +87,25 @@ module.exports = grammar({
           field("right", $._expression)
         )
       ),
-    assignment_expression: ($) =>
+    assignment: ($) =>
       prec.right(
         1,
         seq(
-          field("name", $._expression),
-          field("assign", "<-"),
-          field("value", $._expression)
+          field("left", $._expression),
+          field("operator", "<-"),
+          field("right", $._expression)
         )
       ),
-    unary_expression: ($) =>
-      prec(
-        7,
-        choice(
-          $.negation_expression,
-          $.logical_negation_expression,
-          $.type_conversion
-        )
-      ),
-    negation_expression: ($) =>
-      seq(field("operator", "~"), field("operand", $._expression)),
-    logical_negation_expression: ($) =>
-      seq(field("operator", "NOT"), field("operand", $._expression)),
+    _unary_expression: ($) =>
+      prec(7, choice($.unary_operator, $.not_operator, $.type_conversion)),
+    unary_operator: ($) =>
+      seq(field("operator", "~"), field("argument", $._expression)),
+    not_operator: ($) =>
+      seq(field("operator", "NOT"), field("argument", $._expression)),
     type_conversion: ($) =>
       seq(
         field("operator", choice("CHAR", "LG", "INT")),
-        field("operand", $._expression)
+        field("argument", $._expression)
       ),
     identifier: (_) => /[a-zA-Z][a-zA-Z0-9_]*/,
     _constant: ($) => choice($.character, $.number),
