@@ -89,8 +89,13 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          "named": true,
+          "value": "expression_statement"
         },
         {
           "type": "ALIAS",
@@ -128,20 +133,50 @@
           "value": "IF"
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "_closed_statement"
+          "type": "FIELD",
+          "name": "consequence",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_closed_statement"
+          }
         },
+        {
+          "type": "FIELD",
+          "name": "alternative",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "closed_else_clause"
+            },
+            "named": true,
+            "value": "else_clause"
+          }
+        }
+      ]
+    },
+    "closed_else_clause": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
           "value": "ELSE"
         },
         {
-          "type": "SYMBOL",
-          "name": "_closed_statement"
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_closed_statement"
+          }
         }
       ]
     },
@@ -153,12 +188,20 @@
           "value": "WHILE"
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "_closed_statement"
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_closed_statement"
+          }
         }
       ]
     },
@@ -231,12 +274,20 @@
           "value": "IF"
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "_statement"
+          "type": "FIELD",
+          "name": "consequence",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
         }
       ]
     },
@@ -248,20 +299,50 @@
           "value": "IF"
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "_closed_statement"
+          "type": "FIELD",
+          "name": "consequence",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_closed_statement"
+          }
         },
+        {
+          "type": "FIELD",
+          "name": "alternative",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "open_else_clause"
+            },
+            "named": true,
+            "value": "else_clause"
+          }
+        }
+      ]
+    },
+    "open_else_clause": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
           "value": "ELSE"
         },
         {
-          "type": "SYMBOL",
-          "name": "_open_statement"
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_open_statement"
+          }
         }
       ]
     },
@@ -273,12 +354,20 @@
           "value": "WHILE"
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "_open_statement"
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_open_statement"
+          }
         }
       ]
     },

@@ -10,7 +10,7 @@ module.exports = grammar({
     _statement: ($) => choice($._closed_statement, $._open_statement),
     _closed_statement: ($) =>
       choice(
-        $._expression,
+        alias($._expression, $.expression_statement),
         alias($.ifelse_closed_statement, $.if_statement),
         alias($.while_closed_statement, $.while_statement),
         $.do_statement,
@@ -19,13 +19,17 @@ module.exports = grammar({
     ifelse_closed_statement: ($) =>
       seq(
         "IF",
-        $._expression,
-        $._closed_statement,
-        "ELSE",
-        $._closed_statement
+        field("condition", $._expression),
+        field("consequence", $._closed_statement),
+        field("alternative", alias($.closed_else_clause, $.else_clause))
       ),
+    closed_else_clause: ($) => seq("ELSE", field("body", $._closed_statement)),
     while_closed_statement: ($) =>
-      seq("WHILE", $._expression, $._closed_statement),
+      seq(
+        "WHILE",
+        field("condition", $._expression),
+        field("body", $._closed_statement)
+      ),
     do_statement: ($) => seq("DO", repeat($._statement), "END"),
     stop_statement: (_) => seq("STOP"),
     _open_statement: ($) =>
@@ -34,10 +38,26 @@ module.exports = grammar({
         alias($.ifelse_open_statement, $.if_statement),
         alias($.while_open_statement, $.while_statement)
       ),
-    if_open_statement: ($) => seq("IF", $._expression, $._statement),
+    if_open_statement: ($) =>
+      seq(
+        "IF",
+        field("condition", $._expression),
+        field("consequence", $._statement)
+      ),
     ifelse_open_statement: ($) =>
-      seq("IF", $._expression, $._closed_statement, "ELSE", $._open_statement),
-    while_open_statement: ($) => seq("WHILE", $._expression, $._open_statement),
+      seq(
+        "IF",
+        field("condition", $._expression),
+        field("consequence", $._closed_statement),
+        field("alternative", alias($.open_else_clause, $.else_clause))
+      ),
+    open_else_clause: ($) => seq("ELSE", field("body", $._open_statement)),
+    while_open_statement: ($) =>
+      seq(
+        "WHILE",
+        field("condition", $._expression),
+        field("body", $._open_statement)
+      ),
     _expression: ($) =>
       choice(
         $.identifier,

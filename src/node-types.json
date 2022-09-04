@@ -330,27 +330,11 @@
       "required": false,
       "types": [
         {
-          "type": "assignment",
-          "named": true
-        },
-        {
-          "type": "binary_operator",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_operator",
-          "named": true
-        },
-        {
           "type": "do_statement",
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "expression_statement",
           "named": true
         },
         {
@@ -358,31 +342,7 @@
           "named": true
         },
         {
-          "type": "logical_operator",
-          "named": true
-        },
-        {
-          "type": "not_operator",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
           "type": "stop_statement",
-          "named": true
-        },
-        {
-          "type": "type_conversion",
-          "named": true
-        },
-        {
-          "type": "unary_operator",
           "named": true
         },
         {
@@ -393,11 +353,43 @@
     }
   },
   {
-    "type": "if_statement",
+    "type": "else_clause",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "do_statement",
+            "named": true
+          },
+          {
+            "type": "expression_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "stop_statement",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "expression_statement",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -417,15 +409,7 @@
           "named": true
         },
         {
-          "type": "do_statement",
-          "named": true
-        },
-        {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "if_statement",
           "named": true
         },
         {
@@ -445,22 +429,106 @@
           "named": true
         },
         {
-          "type": "stop_statement",
-          "named": true
-        },
-        {
           "type": "type_conversion",
           "named": true
         },
         {
           "type": "unary_operator",
           "named": true
-        },
-        {
-          "type": "while_statement",
-          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_clause",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "do_statement",
+            "named": true
+          },
+          {
+            "type": "expression_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "stop_statement",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -713,22 +781,6 @@
       "required": false,
       "types": [
         {
-          "type": "assignment",
-          "named": true
-        },
-        {
-          "type": "binary_operator",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_operator",
-          "named": true
-        },
-        {
           "type": "declaration",
           "named": true
         },
@@ -737,7 +789,7 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "expression_statement",
           "named": true
         },
         {
@@ -745,31 +797,7 @@
           "named": true
         },
         {
-          "type": "logical_operator",
-          "named": true
-        },
-        {
-          "type": "not_operator",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
           "type": "stop_statement",
-          "named": true
-        },
-        {
-          "type": "type_conversion",
-          "named": true
-        },
-        {
-          "type": "unary_operator",
           "named": true
         },
         {
@@ -927,72 +955,83 @@
   {
     "type": "while_statement",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "assignment",
-          "named": true
-        },
-        {
-          "type": "binary_operator",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_operator",
-          "named": true
-        },
-        {
-          "type": "do_statement",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "logical_operator",
-          "named": true
-        },
-        {
-          "type": "not_operator",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "stop_statement",
-          "named": true
-        },
-        {
-          "type": "type_conversion",
-          "named": true
-        },
-        {
-          "type": "unary_operator",
-          "named": true
-        },
-        {
-          "type": "while_statement",
-          "named": true
-        }
-      ]
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "do_statement",
+            "named": true
+          },
+          {
+            "type": "expression_statement",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          },
+          {
+            "type": "stop_statement",
+            "named": true
+          },
+          {
+            "type": "while_statement",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "binary_operator",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          },
+          {
+            "type": "not_operator",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "type_conversion",
+            "named": true
+          },
+          {
+            "type": "unary_operator",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
