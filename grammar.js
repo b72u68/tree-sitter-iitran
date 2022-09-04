@@ -1,11 +1,15 @@
 module.exports = grammar({
   name: "iitran",
+
   extras: ($) => [/[ \t\r\n]/, $.comment],
+
   word: ($) => $.identifier,
+
   rules: {
     program: ($) => seq(repeat($.declaration), repeat($._statement)),
 
     declaration: ($) => seq($._type, $._identifier_list),
+
     _type: (_) => choice("INTEGER", "CHARACTER", "LOGICAL"),
 
     _identifier_list: ($) =>
