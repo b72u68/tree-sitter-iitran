@@ -18,11 +18,28 @@ Follow this [isntruction](https://github.com/nvim-treesitter/nvim-treesitter#add
 to add new parser and this [instruction](https://github.com/nvim-treesitter/nvim-treesitter#adding-queries)
 to add queries to `nvim-treesitter`.
 
-If you have trouble adding new filetype for `iitran` in `neovim` using [Neovim's `vim.filetype.add()`](<https://neovim.io/doc/user/lua.html#vim.filetype.add()>)
-like in the guide, add this line in your `init.vim`
+To make Neovim detect `iitran` filetype and inject `queries` script, follow the
+instruction in [Neovim's `vim.filetype.add()`](<https://neovim.io/doc/user/lua.html#vim.filetype.add()>)
+or choose one of the following methods and make edit to your `init.vim`
 
+- Add new filetype to Vim/Neovim
+
+```vimscript
+lua << EOF
+vim.filetype.add({
+    extension = {
+        iit='iitran'
+    }
+})
+EOF
 ```
+
+so Vim/Neovim can detect `iitran` file type from the file extension `.iit`.
+
+- Add autocommand to detect filetype in opening buffer
+
+```vimscript
 autocmd BufNewFile,BufRead *.iit set filetype=iitran
 ```
 
-to set file type of the current buffer with `.iit` file extension to `iitran`.
+to set filetype of the current buffer with `.iit` file extension to `iitran`.
