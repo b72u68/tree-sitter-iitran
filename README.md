@@ -18,7 +18,7 @@ Follow this [isntruction](https://github.com/nvim-treesitter/nvim-treesitter#add
 to add new parser and this [instruction](https://github.com/nvim-treesitter/nvim-treesitter#adding-queries)
 to add queries to `nvim-treesitter`.
 
-If you have trouble adding new filetype for `iitran` in `neovim` using [Neovim's `vim.filetype.add()`](<https://neovim.io/doc/user/lua.html#vim.filetype.add())
+If you have trouble adding new filetype for `iitran` in `neovim` using [Neovim's `vim.filetype.add()`](<https://neovim.io/doc/user/lua.html#vim.filetype.add()>)
 like in the guide, add this line in your `init.vim`
 
 ```
