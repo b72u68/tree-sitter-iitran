@@ -786,6 +786,10 @@
           {
             "type": "NOT",
             "named": false
+          },
+          {
+            "type": "not",
+            "named": false
           }
         ]
       }
@@ -954,6 +958,18 @@
           },
           {
             "type": "LG",
+            "named": false
+          },
+          {
+            "type": "char",
+            "named": false
+          },
+          {
+            "type": "int",
+            "named": false
+          },
+          {
+            "type": "lg",
             "named": false
           }
         ]
@@ -1225,20 +1241,72 @@
     "named": false
   },
   {
+    "type": "char",
+    "named": false
+  },
+  {
     "type": "character",
     "named": true
+  },
+  {
+    "type": "character",
+    "named": false
   },
   {
     "type": "comment",
     "named": true
   },
   {
+    "type": "do",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "end",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "int",
+    "named": false
+  },
+  {
+    "type": "integer",
+    "named": false
+  },
+  {
+    "type": "lg",
+    "named": false
+  },
+  {
+    "type": "logical",
+    "named": false
+  },
+  {
+    "type": "not",
+    "named": false
+  },
+  {
     "type": "number",
     "named": true
+  },
+  {
+    "type": "stop",
+    "named": false
+  },
+  {
+    "type": "while",
+    "named": false
   },
   {
     "type": "~",

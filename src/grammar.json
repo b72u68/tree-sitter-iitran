@@ -48,6 +48,18 @@
         {
           "type": "STRING",
           "value": "LOGICAL"
+        },
+        {
+          "type": "STRING",
+          "value": "integer"
+        },
+        {
+          "type": "STRING",
+          "value": "character"
+        },
+        {
+          "type": "STRING",
+          "value": "logical"
         }
       ]
     },
@@ -179,8 +191,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "ELSE"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "ELSE"
+            },
+            {
+              "type": "STRING",
+              "value": "else"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -221,8 +242,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "DO"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "DO"
+            },
+            {
+              "type": "STRING",
+              "value": "do"
+            }
+          ]
         },
         {
           "type": "REPEAT",
@@ -232,17 +262,30 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "END"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "END"
+            },
+            {
+              "type": "STRING",
+              "value": "end"
+            }
+          ]
         }
       ]
     },
     "stop_statement": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
           "type": "STRING",
           "value": "STOP"
+        },
+        {
+          "type": "STRING",
+          "value": "stop"
         }
       ]
     },
@@ -282,8 +325,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "IF"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "IF"
+            },
+            {
+              "type": "STRING",
+              "value": "if"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -345,8 +397,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "ELSE"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "ELSE"
+            },
+            {
+              "type": "STRING",
+              "value": "else"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -362,8 +423,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "WHILE"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "WHILE"
+            },
+            {
+              "type": "STRING",
+              "value": "while"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -746,8 +816,17 @@
           "type": "FIELD",
           "name": "operator",
           "content": {
-            "type": "STRING",
-            "value": "NOT"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "NOT"
+              },
+              {
+                "type": "STRING",
+                "value": "not"
+              }
+            ]
           }
         },
         {
@@ -780,6 +859,18 @@
               {
                 "type": "STRING",
                 "value": "INT"
+              },
+              {
+                "type": "STRING",
+                "value": "char"
+              },
+              {
+                "type": "STRING",
+                "value": "lg"
+              },
+              {
+                "type": "STRING",
+                "value": "int"
               }
             ]
           }

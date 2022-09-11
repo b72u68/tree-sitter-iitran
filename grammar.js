@@ -10,7 +10,15 @@ module.exports = grammar({
 
     declaration: ($) => seq($._type, $._identifier_list),
 
-    _type: (_) => choice("INTEGER", "CHARACTER", "LOGICAL"),
+    _type: (_) =>
+      choice(
+        "INTEGER",
+        "CHARACTER",
+        "LOGICAL",
+        "integer",
+        "character",
+        "logical"
+      ),
 
     _identifier_list: ($) =>
       seq(
@@ -37,7 +45,8 @@ module.exports = grammar({
         field("alternative", alias($.closed_else_clause, $.else_clause))
       ),
 
-    closed_else_clause: ($) => seq("ELSE", field("body", $._closed_statement)),
+    closed_else_clause: ($) =>
+      seq(choice("ELSE", "else"), field("body", $._closed_statement)),
 
     while_closed_statement: ($) =>
       seq(
@@ -46,8 +55,9 @@ module.exports = grammar({
         field("body", $._closed_statement)
       ),
 
-    do_statement: ($) => seq("DO", repeat($._statement), "END"),
-    stop_statement: (_) => seq("STOP"),
+    do_statement: ($) =>
+      seq(choice("DO", "do"), repeat($._statement), choice("END", "end")),
+    stop_statement: (_) => choice("STOP", "stop"),
 
     _open_statement: ($) =>
       choice(
@@ -58,7 +68,7 @@ module.exports = grammar({
 
     if_open_statement: ($) =>
       seq(
-        "IF",
+        choice("IF", "if"),
         field("condition", $._expression),
         field("consequence", $._statement)
       ),
@@ -71,11 +81,12 @@ module.exports = grammar({
         field("alternative", alias($.open_else_clause, $.else_clause))
       ),
 
-    open_else_clause: ($) => seq("ELSE", field("body", $._open_statement)),
+    open_else_clause: ($) =>
+      seq(choice("ELSE", "else"), field("body", $._open_statement)),
 
     while_open_statement: ($) =>
       seq(
-        "WHILE",
+        choice("WHILE", "while"),
         field("condition", $._expression),
         field("body", $._open_statement)
       ),
@@ -166,11 +177,14 @@ module.exports = grammar({
       seq(field("operator", "~"), field("argument", $._expression)),
 
     not_operator: ($) =>
-      seq(field("operator", "NOT"), field("argument", $._expression)),
+      seq(
+        field("operator", choice("NOT", "not")),
+        field("argument", $._expression)
+      ),
 
     type_conversion: ($) =>
       seq(
-        field("operator", choice("CHAR", "LG", "INT")),
+        field("operator", choice("CHAR", "LG", "INT", "char", "lg", "int")),
         field("argument", $._expression)
       ),
 
