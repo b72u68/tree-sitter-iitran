@@ -670,6 +670,14 @@
           {
             "type": "OR",
             "named": false
+          },
+          {
+            "type": "and",
+            "named": false
+          },
+          {
+            "type": "or",
+            "named": false
           }
         ]
       },
@@ -1241,16 +1249,20 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": false
+  },
+  {
     "type": "char",
     "named": false
   },
   {
     "type": "character",
-    "named": true
+    "named": false
   },
   {
     "type": "character",
-    "named": false
+    "named": true
   },
   {
     "type": "comment",
@@ -1299,6 +1311,10 @@
   {
     "type": "number",
     "named": true
+  },
+  {
+    "type": "or",
+    "named": false
   },
   {
     "type": "stop",
