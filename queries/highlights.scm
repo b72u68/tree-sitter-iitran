@@ -12,6 +12,12 @@
  "IF"
  "ELSE"
  "WHILE"
+ "stop"
+ "do"
+ "end"
+ "if"
+ "else"
+ "while"
 ] @keyword
 
 [
@@ -32,18 +38,27 @@
  "NOT"
  "AND"
  "OR"
+ "not"
+ "and"
+ "or"
 ] @keyword.operator
 
 [
  "CHARACTER"
  "LOGICAL"
  "INTEGER"
+ "character"
+ "logical"
+ "integer"
 ] @type.builtin
 
 [
  "CHAR"
  "LG"
  "INT"
+ "char"
+ "lg"
+ "int"
 ] @type
 
 [

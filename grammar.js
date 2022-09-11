@@ -136,7 +136,7 @@ module.exports = grammar({
           3,
           seq(
             field("left", $._expression),
-            field("operator", "AND"),
+            field("operator", choice("AND", "and")),
             field("right", $._expression)
           )
         ),
@@ -144,7 +144,7 @@ module.exports = grammar({
           2,
           seq(
             field("left", $._expression),
-            field("operator", "OR"),
+            field("operator", choice("OR", "or")),
             field("right", $._expression)
           )
         )
