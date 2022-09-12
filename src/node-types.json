@@ -1258,11 +1258,11 @@
   },
   {
     "type": "character",
-    "named": false
+    "named": true
   },
   {
     "type": "character",
-    "named": true
+    "named": false
   },
   {
     "type": "comment",

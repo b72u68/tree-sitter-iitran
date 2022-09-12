@@ -50,7 +50,7 @@ module.exports = grammar({
 
     while_closed_statement: ($) =>
       seq(
-        "WHILE",
+        choice("WHILE", "while"),
         field("condition", $._expression),
         field("body", $._closed_statement)
       ),

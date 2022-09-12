@@ -153,8 +153,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "IF"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "IF"
+            },
+            {
+              "type": "STRING",
+              "value": "if"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -217,8 +226,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "WHILE"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "WHILE"
+            },
+            {
+              "type": "STRING",
+              "value": "while"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -359,8 +377,17 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "IF"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "IF"
+            },
+            {
+              "type": "STRING",
+              "value": "if"
+            }
+          ]
         },
         {
           "type": "FIELD",
