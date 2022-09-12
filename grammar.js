@@ -39,7 +39,7 @@ module.exports = grammar({
 
     ifelse_closed_statement: ($) =>
       seq(
-        "IF",
+        choice("IF", "if"),
         field("condition", $._expression),
         field("consequence", $._closed_statement),
         field("alternative", alias($.closed_else_clause, $.else_clause))
@@ -75,7 +75,7 @@ module.exports = grammar({
 
     ifelse_open_statement: ($) =>
       seq(
-        "IF",
+        choice("IF", "if"),
         field("condition", $._expression),
         field("consequence", $._closed_statement),
         field("alternative", alias($.open_else_clause, $.else_clause))
