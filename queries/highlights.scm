@@ -39,8 +39,6 @@
  "AND"
  "OR"
  "not"
- "and"
- "or"
 ] @keyword.operator
 
 [
